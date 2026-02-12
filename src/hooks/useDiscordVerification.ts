@@ -34,7 +34,9 @@ export const useDiscordVerification = () => {
       return { isMember: true, needsRejoin: false };
     } catch (error) {
       console.error('Verification error:', error);
-      return { isMember: false, needsRejoin: false };
+      // If verification fails due to network issues, don't log out the user
+      // Just assume they're still valid and let them continue
+      return { isMember: true, needsRejoin: false };
     } finally {
       setIsVerifying(false);
     }

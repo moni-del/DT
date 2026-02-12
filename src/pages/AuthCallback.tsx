@@ -39,10 +39,10 @@ const AuthCallback = () => {
         discordService.storeAuthData(user, isInChannel);
         
         setStatus('success');
-        setMessage('تم تسجيل الدخول بنجاح! جاري التحقق من عضويتك...');
+        setMessage('تم تسجيل الدخول بنجاح! جاري النقل للمتجر...');
         
         setTimeout(() => {
-          navigate('/verify');
+          navigate('/');
         }, 1500);
       } catch (error) {
         console.error('Auth callback error:', error);
