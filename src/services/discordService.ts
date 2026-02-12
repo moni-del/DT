@@ -59,10 +59,9 @@ class DiscordService {
   getAuthUrl(): string {
     const scopes = ['identify', 'email', 'guilds.join'];
     
-    // Use correct redirect URI with /DT/ path for GitHub Pages
+    // Use correct redirect URI for GitHub Pages
     const currentOrigin = window.location.origin;
-    const basePath = window.location.pathname.startsWith('/DT') ? '/DT' : '';
-    const redirectUri = `${currentOrigin}${basePath}/auth/discord/callback`;
+    const redirectUri = `${currentOrigin}/DT/auth/discord/callback`;
     
     console.log('Using redirect URI:', redirectUri);
     
@@ -78,10 +77,9 @@ class DiscordService {
 
   // Exchange authorization code for access token
   async exchangeCodeForToken(code: string): Promise<DiscordTokenResponse> {
-    // Use correct redirect URI with /DT/ path for GitHub Pages
+    // Use correct redirect URI for GitHub Pages
     const currentOrigin = window.location.origin;
-    const basePath = window.location.pathname.startsWith('/DT') ? '/DT' : '';
-    const redirectUri = `${currentOrigin}${basePath}/auth/discord/callback`;
+    const redirectUri = `${currentOrigin}/DT/auth/discord/callback`;
     
     console.log('Exchanging code with redirect URI:', redirectUri);
     

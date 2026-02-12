@@ -18,7 +18,7 @@ export default defineConfig(({ mode }) => ({
       "@": resolve(__dirname, "./src"),
     },
   },
-  base: "/DT/",
+  base: mode === "production" ? "/DT/" : "/",
   build: {
     outDir: "dist",
     assetsDir: "assets",
