@@ -1,0 +1,45 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build
+      run: npm run build
+      env:
+        VITE_DISCORD_CLIENT_ID: ${{ secrets.VITE_DISCORD_CLIENT_ID }}
+        VITE_DISCORD_CLIENT_SECRET: ${{ secrets.VITE_DISCORD_CLIENT_SECRET }}
+        VITE_DISCORD_REDIRECT_URI: ${{ secrets.VITE_DISCORD_REDIRECT_URI }}
+        VITE_DISCORD_GUILD_ID: ${{ secrets.VITE_DISCORD_GUILD_ID }}
+        VITE_DISCORD_CHANNEL_ID: ${{ secrets.VITE_DISCORD_CHANNEL_ID }}
+        VITE_DISCORD_BOT_TOKEN: ${{ secrets.VITE_DISCORD_BOT_TOKEN }}
+        VITE_DISCORD_API_BASE: ${{ secrets.VITE_DISCORD_API_BASE }}
+        VITE_DISCORD_OAUTH_AUTHORIZE: ${{ secrets.VITE_DISCORD_OAUTH_AUTHORIZE }}
+        VITE_DISCORD_OAUTH_TOKEN: ${{ secrets.VITE_DISCORD_OAUTH_TOKEN }}
+        VITE_DISCORD_CHECK_API: ${{ secrets.VITE_DISCORD_CHECK_API }}
+        VITE_DISCORD_INVITE_URL: ${{ secrets.VITE_DISCORD_INVITE_URL }}
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/main'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
