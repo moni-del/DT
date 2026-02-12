@@ -73,7 +73,7 @@ class DiscordService {
       scope: scopes.join(' '),
     });
 
-    return `${import.meta.env.VITE_DISCORD_OAUTH_AUTHORIZE}?${params.toString()}`;
+    return `${discordConfig.DISCORD_OAUTH_AUTHORIZE}?${params.toString()}`;
   }
 
   // Exchange authorization code for access token
@@ -85,7 +85,7 @@ class DiscordService {
     
     console.log('Exchanging code with redirect URI:', redirectUri);
     
-    const response = await fetch(`${import.meta.env.VITE_DISCORD_OAUTH_TOKEN}`, {
+    const response = await fetch(`${discordConfig.DISCORD_OAUTH_TOKEN}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
