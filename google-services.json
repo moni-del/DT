@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "948374726005",
+    "project_id": "dtdt-f871e",
+    "storage_bucket": "dtdt-f871e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:948374726005:android:b2674d3d7944ae7b69df3c",
+        "android_client_info": {
+          "package_name": "com.dt.iq"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzDwv2rkGKmphqQhA6JKZ8UarrRYCa05o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
