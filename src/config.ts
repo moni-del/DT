@@ -29,5 +29,5 @@ export const devConfig = {
   DISCORD_INVITE_URL: import.meta.env.VITE_DISCORD_INVITE_URL || config.DISCORD_INVITE_URL,
 };
 
-// Use development config if environment variables exist, otherwise use production
-export const discordConfig = import.meta.env.DEV ? devConfig : config;
+// Use production config always for GitHub Pages
+export const discordConfig = config;
